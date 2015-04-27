@@ -1,0 +1,2 @@
+serviceClass: com.porschePETFinder.www.client.GreetingService
+path: AE789BF80F93B6C4365D1A7176BCFA6C.gwt.rpc

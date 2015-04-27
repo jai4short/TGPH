@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>greetServlet</servlet-name>
+    <servlet-class>com.porschePETFinder.www.server.GreetingServiceImpl</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>parseJSON</servlet-name>
+  	<servlet-class>com.porschePETFinder.dataload.ParseJSON</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>diagramLoad</servlet-name>
+  	<servlet-class>com.porschePETFinder.dataload.diagramLoad</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>loadModel</servlet-name>
+  	<servlet-class>com.porschePETFinder.dataload.loadModel</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>getDiagrams</servlet-name>
+  	<servlet-class>com.porschePETFinder.www.diagram.getDiagrams</servlet-class>
+  </servlet>
+  <servlet>
+      <servlet-name>getParts</servlet-name>
+      <servlet-class>com.porschePETFinder.www.parts.getParts</servlet-class>
+  </servlet>
+  <servlet>
+      <servlet-name>addOrder</servlet-name>
+      <servlet-class>com.porschePETFinder.www.order.addOrder</servlet-class>
+  </servlet>
+  <servlet>
+      <servlet-name>completeOrder</servlet-name>
+      <servlet-class>com.porschePETFinder.www.order.completeOrder</servlet-class>
+  </servlet>
+  <servlet>
+      <servlet-name>enqueue</servlet-name>
+      <servlet-class>com.porschePETFinder.queue.enqueue</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+      <servlet-name>enqueue</servlet-name>
+      <url-pattern>/enqueue</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+      <servlet-name>completeOrder</servlet-name>
+      <url-pattern>/completeOrder</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+      <servlet-name>addOrder</servlet-name>
+      <url-pattern>/addOrder</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+      <servlet-name>getParts</servlet-name>
+      <url-pattern>/getParts</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>greetServlet</servlet-name>
+    <url-pattern>/porschepet/greet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>parseJSON</servlet-name>
+  	<url-pattern>/parseJSON</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>diagramLoad</servlet-name>
+  	<url-pattern>/diagramLoad</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>loadModel</servlet-name>
+  	<url-pattern>/loadModel</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getDiagrams</servlet-name>
+    <url-pattern>/getDiagrams</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>PorschePET.html</welcome-file>
+  </welcome-file-list>
+</web-app>

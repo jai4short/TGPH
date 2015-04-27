@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script>
+			  $.ajax({
+			  type: 'GET',
+			  datatype: 'jsonp',
+			  crossdomain: 'true',
+			  url:"https://www.kimonolabs.com/api/3dbo59hi?apikey=S4nzegeyCA0whtEBXYw744SSGy6p3K2k",
+			  success: function (response) {
+			  	alert("response retrieved");
+			    document.write(response);
+			  },
+			  error: function (xhr, status) {
+			  	alert("there was an error");
+			    //handle errors
+			  }
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
