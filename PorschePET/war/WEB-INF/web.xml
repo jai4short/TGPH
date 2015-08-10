@@ -31,6 +31,10 @@
       <servlet-class>com.porschePETFinder.www.parts.getParts</servlet-class>
   </servlet>
   <servlet>
+      <servlet-name>searchParts</servlet-name>
+      <servlet-class>com.porschePETFinder.www.parts.searchParts</servlet-class>
+  </servlet>
+  <servlet>
       <servlet-name>addOrder</servlet-name>
       <servlet-class>com.porschePETFinder.www.order.addOrder</servlet-class>
   </servlet>
@@ -39,10 +43,78 @@
       <servlet-class>com.porschePETFinder.www.order.completeOrder</servlet-class>
   </servlet>
   <servlet>
+      <servlet-name>orderPartList</servlet-name>
+      <servlet-class>com.porschePETFinder.www.order.orderPartList</servlet-class>
+  </servlet>
+  <servlet>
       <servlet-name>enqueue</servlet-name>
       <servlet-class>com.porschePETFinder.queue.enqueue</servlet-class>
   </servlet>
+  <servlet>
+      <servlet-name>queryDS</servlet-name>
+      <servlet-class>com.porschePETFinder.www.admin.queryDS</servlet-class>
+  </servlet>
+  <servlet>
+      <servlet-name>deleteEntities</servlet-name>
+      <servlet-class>com.porschePETFinder.www.admin.deleteEntities</servlet-class>
+  </servlet>
+  <servlet>
+      <servlet-name>queryGQL</servlet-name>
+      <servlet-class>com.porschePETFinder.www.admin.queryGQL</servlet-class>
+  </servlet>
+  <servlet>
+      <servlet-name>viewOrder</servlet-name>
+      <servlet-class>com.porschePETFinder.www.order.viewOrder</servlet-class>
+  </servlet>
+  <servlet>
+ 	 <servlet-name>deleteOrder</servlet-name>
+      <servlet-class>com.porschePETFinder.www.order.deleteOrder</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>orderList</servlet-name>
+    <servlet-class>com.porschePETFinder.www.order.orderList</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>contactUs</servlet-name>
+    <servlet-class>com.porschePETFinder.www.emailService.contactUs</servlet-class>
+  </servlet>
   
+  <servlet-mapping>
+      <servlet-name>contactUs</servlet-name>
+      <url-pattern>/contactUs</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+      <servlet-name>queryGQL</servlet-name>
+      <url-pattern>/queryGQL</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+      <servlet-name>orderPartList</servlet-name>
+      <url-pattern>/orderPartList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+      <servlet-name>orderList</servlet-name>
+      <url-pattern>/orderList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+      <servlet-name>searchParts</servlet-name>
+      <url-pattern>/searchParts</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+      <servlet-name>deleteOrder</servlet-name>
+      <url-pattern>/deleteOrder</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+      <servlet-name>viewOrder</servlet-name>
+      <url-pattern>/viewOrder</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+      <servlet-name>deleteEntities</servlet-name>
+      <url-pattern>/deleteEntities</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+      <servlet-name>queryDS</servlet-name>
+      <url-pattern>/queryDS</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
       <servlet-name>enqueue</servlet-name>
       <url-pattern>/enqueue</url-pattern>

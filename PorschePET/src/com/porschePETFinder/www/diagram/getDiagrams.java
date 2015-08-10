@@ -35,42 +35,42 @@ public class getDiagrams extends HttpServlet {
 					"		<div class=\"container\"> \n" +
 					"			<div class=\"row\">	\n" +
 					"				<div class=\"col-lg-12\"> \n" +
-					"					<a href=\"http://127.0.0.1:8888\\getDiagrams?group=Engine&model=" + model + "\">Engine</a> \n" +
+					"					<a href=\"http://www.germanpartshound.com\\getDiagrams?group=Engine&model=" + model + "\"><h1>Engine</h1></a> \n" +
 					"				</div> \n" +
 					"			</div> \n" +
 					"			<div class=\"row\">	\n" +
 					"				<div class=\"col-lg-12\"> \n" +
-					"					<a href=\"http://127.0.0.1:8888\\getDiagrams?group=Fuel/Exhaust&model=" + model + "\">Fuel\\Exhaust</a> \n" +
+					"					<a href=\"http://www.germanpartshound.com\\getDiagrams?group=Fuel/Exhaust&model=" + model + "\"><h1>Fuel\\Exhaust</h1></a> \n" +
 					"				</div> \n" +
 					"			</div> \n" +
 					"			<div class=\"row\">	\n" +
 					"				<div class=\"col-lg-12\"> \n" +
-					"					<a href=\"http://127.0.0.1:8888\\getDiagrams?group=Body&model=" + model + "\">Body</a> \n" +
+					"					<a href=\"http://www.germanpartshound.com\\getDiagrams?group=Body&model=" + model + "\"><h1>Body</h1></a> \n" +
 					"				</div> \n" +
 					"			</div> \n" +
 					"			<div class=\"row\">	\n" +
 					"				<div class=\"col-lg-12\"> \n" +
-					"					<a href=\"http://127.0.0.1:8888\\getDiagrams?group=Electric&model=" + model + "\">Electrical</a> \n" +
+					"					<a href=\"http://www.germanpartshound.com\\getDiagrams?group=Electric&model=" + model + "\"><h1>Electrical</h1></a> \n" +
 					"				</div> \n" +
 					"			</div> \n" +
 					"			<div class=\"row\">	\n" +
 					"				<div class=\"col-lg-12\"> \n" +
-					"					<a href=\"http://127.0.0.1:8888\\getDiagrams?group=Brakes/Wheel&model=" + model + "\">Brakes\\Wheel</a> \n" +
+					"					<a href=\"http://www.germanpartshound.com\\getDiagrams?group=Brakes/Wheels&model=" + model + "\"><h1>Brakes\\Wheels</h1></a> \n" +
 					"				</div> \n" +
 					"			</div> \n" +
 					"			<div class=\"row\">	\n" +
 					"				<div class=\"col-lg-12\"> \n" +
-					"					<a href=\"http://127.0.0.1:8888\\getDiagrams?group=Transmission&model=" + model + "\">Transmission </a> \n" +
+					"					<a href=\"http://www.germanpartshound.com\\getDiagrams?group=Transmission&model=" + model + "\"><h1>Transmission</h1></a> \n" +
 					"				</div> \n" +
 					"			</div> \n" +
 					"			<div class=\"row\">	\n" +
 					"				<div class=\"col-lg-12\"> \n" +
-					"					<a href=\"http://127.0.0.1:8888\\getDiagrams?group=Pedal&20System/Levers&model=" + model + "\">Pedal System\\Levers</a> \n" +
+					"					<a href=\"http://www.germanpartshound.com\\getDiagrams?group=Pedal%20System/Levers&model=" + model + "\"><h1>Pedal System\\Levers</h1></a> \n" +
 					"				</div> \n" +
 					"			</div> \n" +
 					"			<div class=\"row\">	\n" +
 					"				<div class=\"col-lg-12\"> \n" +
-					"					<a href=\"http://127.0.0.1:8888\\getDiagrams?group=Front%20Axle/Steering&model=" + model + "\">Front Axle\\Steering</a> \n" +
+					"					<a href=\"http://www.germanpartshound.com\\getDiagrams?group=Front%20Axle/Steering&model=" + model + "\"><h1>Front Axle\\Steering</h1></a> \n" +
 					"				</div> \n" +
 					"			</div> \n" +
 					"		</div> \n" +
@@ -91,7 +91,7 @@ public class getDiagrams extends HttpServlet {
 		String model = req.getParameter("model");
 		System.out.println(model);
 		
-		String resultName, resultImage, output;
+		String resultName, resultImage, resultModel, resultSection, output;
 		
 		output = "<html> \n" +
 		"<head> \n" + 
@@ -101,6 +101,8 @@ public class getDiagrams extends HttpServlet {
 		
 		ArrayList diagrams = new ArrayList();
 		ArrayList images = new ArrayList();
+		ArrayList sections = new ArrayList();
+		ArrayList models = new ArrayList();
 		
 		Query query1 = new Query("Diagrams");
 		Filter propertyFilter = new FilterPredicate("model", FilterOperator.EQUAL, model);
@@ -114,13 +116,22 @@ public class getDiagrams extends HttpServlet {
 		
 		for (Entity result : pq.asIterable()) {
 			resultName = (String) result.getProperty("name");
+			resultModel = (String) result.getProperty("model");
+			resultSection = (String) result.getProperty("section");
 			resultImage = (String) result.getProperty("imageUrl");
-			resultImage = resultImage.replace("localhost:8888", "http://127.0.0.1:8888");
+			resultImage = resultImage.replace("localhost:8888", "www.germanpartshound.com");
 			resultImage = resultImage.replace(" ", "_");
+			resultImage = resultImage.replace("(", "");
+			resultImage = resultImage.replace(")", "");
 			
-			//resultImage = resultImage.replace("http://127.0.0.1:8888|images|", "http://127.0.0.1:8888/images/");
+			if (!resultImage.contains(".gif"))
+				resultImage = resultImage + ".gif";
+			
+			//resultImage = resultImage.replace("http://www.germanpartshound.com|images|", "http://www.germanpartshound.com/images/");
 			images.add(resultImage);
 			diagrams.add(resultName);
+			sections.add(resultSection);
+			models.add(resultModel);
 		}
 		
 		for (int i = 0; i < images.size(); i++){
@@ -131,8 +142,8 @@ public class getDiagrams extends HttpServlet {
 							"</tr> \n" +
 							"<tr> \n" +
 							"	<td> \n" + 
-							"		<a href=\"http://127.0.0.1:8888/getParts?searchName=" + diagrams.get(i) + "\"><img src=\"" + images.get(i) + "\" /></a> \n" +
-							//"		<a href=\"http://127.0.0.1:8888/getParts?searchName=" + diagrams.get(i) + "\"><img src=\"" + images.get(i) + "\" /></a> \n" +
+							"		<a href=\"http://www.germanpartshound.com/getParts?model=" + models.get(i) + "&group=" + sections.get(i) + "\"><img src=\"" + images.get(i) + "\" /></a> \n" +
+							//"		<a href=\"http://www.germanpartshound.com/getParts?searchName=" + diagrams.get(i) + "\"><img src=\"" + images.get(i) + "\" /></a> \n" +
 							"	</td> \n" +
 							"</tr> \n";
 		}

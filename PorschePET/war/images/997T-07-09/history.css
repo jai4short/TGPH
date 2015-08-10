@@ -1,0 +1,196 @@
+ 
+.clear {clear: both;height: 0;line-height: 0;}
+.clearfix:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.clearfix {display: inline-block;}
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+.clearfix {height: 1%;}
+.clearfix {display: block;}
+
+/* Panel Tab/button */
+.tab {
+ 
+ 
+	position: fixed;
+    left:-35px;
+    z-index: 999;
+
+	
+	
+}
+
+.tab ul.login {
+	display: block;
+	position: relative;
+  	float: right;
+  	clear: right;
+  	height: 42px;
+	width: auto;
+  	font-weight: bold;
+	line-height: 42px;
+	margin: 0;
+	top:50px;
+  left:-5px;
+  	color: white;
+  	font-size: 80%;
+	text-align: center;
+}
+
+ 
+
+ 
+.tab ul.login li {
+ 	text-align: left;
+  	padding: 0 6px;
+	display: block;
+	float: left;
+	height: 142px;
+  	background-color:#272727;
+			position: fixed;
+			width:18px;
+    left:0px;
+	top:-5px;
+}
+
+.tab ul.login li a {
+	color: #15ADFF;
+}
+
+.tab ul.login li a:hover {
+	color: white;
+}
+
+.tab .sep {color:#414141}
+
+.tab a.open, .tab a.close {
+	height: 20px;
+	line-height: 20px !important;
+	padding-left: 30px !important;
+	cursor: pointer;
+	display: block;
+	width: 5px;
+	position: relative;
+	top: -60px;
+}
+
+.tab a.open {background: url(https://www.autoatlanta.com/images/bt_open.png) no-repeat left 0;}
+.tab a.close {background: url(https://www.autoatlanta.com/images/bt_close.png) no-repeat left 0;}
+.tab a:hover.open {background: url(https://www.autoatlanta.com/images/bt_open.png) no-repeat left -19px;}
+.tab a:hover.close {background: url(https://www.autoatlanta.com/images/bt_close.png) no-repeat left -19px;}
+
+/* sliding panel */
+#toppanel {
+    position: absolute;   /*Panel will overlap  content */
+    /*position: relative;*/   /*Panel will "push" the content down */
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+	font:14px/16px Arial, Helvetica, sans-serif;
+	text-transform: none;
+}
+
+#panel {
+	width: 850px;
+	 min-height:200px;
+	color: #999999;
+	background: #272727;
+	overflow: hidden;
+	position: relative;
+	z-index: 3;
+	display: none;
+}
+
+#panel h1 {
+	font-size: 1.6em;
+	padding: 5px 0 10px;
+	margin: 0;
+	color: white;
+}
+
+ 
+
+#panel a {
+	text-decoration: none;
+	color: #15ADFF;
+}
+
+#panel a:hover {
+	color: white;
+}
+
+ 
+#panel .content {
+	width: 850px;
+	margin: 0 auto;
+	padding-top: 15px;
+	text-align: left;
+	font-size: 0.85em;
+}
+
+#panel .content .left {
+	width: 850px;
+	float: left;
+	padding: 0 45px;
+	
+	border-left: 1px solid #333;
+}
+
+ 
+ 
+
+  
+
+/* BUTTONS */
+/* Login and Register buttons */
+#panel .content input.bt_login,
+#panel .content input.bt_register {
+	display: block;
+	float: left;
+	clear: left;
+	height: 24px;
+	text-align: center;
+	cursor: pointer;
+	border: none;
+	font-weight: bold;
+	margin: 10px 0;
+}
+
+ 
+
+p.vtext {
+	color:#FFF;
+	border:0px solid red;
+	writing-mode:tb-rl;
+	-webkit-transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	-o-transform: rotate(90deg);
+	white-space:nowrap;
+	display:block;
+ 
+	bottom:0;
+	width:20px;
+	height:20px;
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-size:24px;
+	font-weight:normal;
+	text-shadow: 0px 0px 1px #333;
+	text-transform: none;
+position:relative;
+left:10px;
+top:10px;
+}
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+  

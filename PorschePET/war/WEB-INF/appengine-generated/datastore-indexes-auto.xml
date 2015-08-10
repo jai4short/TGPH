@@ -1,4 +1,12 @@
-<!-- Indices written at Mon, 20 Apr 2015 00:07:55 EDT -->
+<!-- Indices written at Fri, 7 Aug 2015 09:03:29 EDT -->
 
-<datastore-indexes/>
+<datastore-indexes>
 
+    <!-- Used 2 times in query history -->
+    <datastore-index kind="parts" ancestor="false" source="auto">
+        <property name="model" direction="asc"/>
+        <property name="section" direction="asc"/>
+        <property name="partNumberText" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datastore-indexes
+  autoGenerate="true">
+    <datastore-index kind="parts" ancestor="false" source="manual">
+        <property name="partNumberText" direction="asc" />
+        <property name="partNumberText" direction="desc" />
+    </datastore-index>
+    <datastore-index kind="parts" ancestor="false" source="manual">
+        <property name="model" direction="asc"/>
+        <property name="section" direction="asc"/>
+    </datastore-index>
+    <datastore-index kind="parts" ancestor="false" source="manual">
+        <property name="model" direction="asc"/>
+        <property name="section" direction="asc"/>
+        <property name="partNumberText" direction="desc"/>
+    </datastore-index>
+    <datastore-index kind="parts" ancestor="false" source="manual">
+        <property name="model" direction="asc"/>
+        <property name="section" direction="asc"/>
+        <property name="pos" direction="asc"/>
+    </datastore-index>
+</datastore-indexes>

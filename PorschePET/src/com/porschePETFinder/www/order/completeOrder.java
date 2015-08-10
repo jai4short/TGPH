@@ -1,6 +1,11 @@
 package com.porschePETFinder.www.order;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,33 +17,55 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 
 public class completeOrder extends HttpServlet {
-	public void doGet(HttpServletRequest req, HttpServletResponse res){
-		String key = "P@$$w0rd";
-		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+	public void doPost(HttpServletRequest req, HttpServletResponse res){
+		//String key = "P@$$w0rd";
 		
-		String inputKey = req.getParameter("key");
-		
-		if (inputKey.equals(key)){
-			HttpSession session = req.getSession();
+		try {
+			String contact = req.getParameter("contact");
 			
-			Entity order = new Entity("order");
-			order.setProperty("items", session.getAttribute("order"));
-			datastore.put(order);
-			session.invalidate();
+			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 			
-			try {
-				res.getOutputStream().println("Order submitted.");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			String inputKey = req.getParameter("key");
+			ArrayList orderItems = new ArrayList();
+			ArrayList orderKeys = new ArrayList();
+			
+			//if (inputKey.equals(key)){
+				HttpSession session = req.getSession();
+				TreeMap<String, ArrayList> items = (TreeMap<String, ArrayList>) session.getAttribute("order");
+				Set<String> keys = items.keySet();
+				Iterator i = keys.iterator();
+				while (i.hasNext()){
+					ArrayList entries = items.get(i.next());
+					orderItems.add(entries.get(2));
+					orderKeys.add(entries.get(0));
+				}
+				
+				Entity order = new Entity("order");
+				order.setProperty("items", orderItems);
+				order.setProperty("partKeys", orderKeys);
+				order.setProperty("contact", contact);
+				Date date = new Date();
+				order.setProperty("timestamp", date);
+				datastore.put(order);
+				session.invalidate();
+				
+				try {
+					res.setContentType("text/plain");
+					res.getWriter().write("Order Submitted");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			/**}
+			
+			else{
+				System.out.print("unauthorized request.");
+			}**/
+		}
+		catch (NullPointerException e){
 			
 		}
-		
-		else{
-			System.out.print("unauthorized request.");
-		}
-		
 
 	}
 

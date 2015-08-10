@@ -1,20 +1,40 @@
-function addItem(id){
+function addItem(id, model){
 	var key = document.getElementById(id).innerHTML;
-	var url = "/addOrder?item=" + key;
+	document.getElementById("orderResponse").innerHTML=key;
+	var url = "/addOrder?item=" + key + "&model=" + model + "&partKey=" + document.getElementById("itemKey").innerHTML;
 	var response = sendAjax(url);
-	var completed = confirm(response);
-	if (completed == true){
-		completeOrder();
-	}
-	else {
-		alert("Continue with your Order!");
-	}	
+	document.getElementById("orderResponse").innerHTML="Item Added, press close to add more parts.";
+	//document.getElementById("orderResponse").innerHTML=response;
+	document.getElementById("addItemBtn").style.visibility="hidden";
+	document.getElementById("dAddItemBtn").style.visibility="hidden";
+	//$('addItemBtn').prop('disabled', true);
+
+}
+
+function getItem(id, p, key){
+	var part = document.getElementById(id).innerHTML;
+	var partNum = document.getElementById(p).innerHTML;
+	document.getElementById("addItemBtn").style.visibility="visible";
+	document.getElementById("dAddItemBtn").style.visibility="visible";
+	var item = partNum + " " + part;
+	document.getElementById("orderResponse").innerHTML=item;
+	document.getElementById("itemKey").innerHTML=key;
 }
 
 function completeOrder(){
-	var url = "/completeOrder?key=P@$$w0rd";
-	var response = sendAjax(url);
-	alert(response);
+	var form = document.getElementById("completeOrder");
+	if (form.checkValidity()){
+		form.submit();
+	}
+	else {
+		var vMsg="Invalid email please re-enter"
+		document.getElementById("validationMsg").innerHTML=vMsg;
+	}
+		
+}
+
+function removeItems(){
+	document.getElementById("removeItems").submit();
 }
 
 function sendAjax(url){
@@ -32,6 +52,10 @@ function sendAjax(url){
           var response = ajax.responseText;
           return response;
         }
+        else if (ajax.readyState == 4 && ajax.status != 200){
+        	document.getElementById("orderResponse").innerHTML="An error occurred, try again";
+        }
       };
       ajax.send();
 }
+
